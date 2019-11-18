@@ -41,6 +41,9 @@ public class FactoryTest {
         page.add(traynews);
         page.add(traysearch);
         page.output();
+
+        Page yahooPage = factory.createYahooPage();
+        yahooPage.output();
     }
 
 }
