@@ -18,18 +18,23 @@ public class DisplayTest {
     }
 
     @Test
-    public void testFileDisplay() {
-        Display d1 = new Display(new FileDisplayImpl("C:\\Users\\Administrator\\Desktop\\My Notes\\docker.md"));
-        d1.display();
+    public void testRandomDisplay() {
+        RandomDisplay randomDisplay = new RandomDisplay(new StringDisplayImpl("Hello, World!"));
+        randomDisplay.randomDisplay(2);
     }
 
     @Test
-    public void testSpecialString() {
-        Display d1 = new Display(new SpecialStringDisplayImpl('<', '>', "*", 4));
-        d1.display();
+    public void testFileDisplay() {
+        CountDisplay d1 = new CountDisplay(new FileDisplayImpl("C:\\Users\\Administrator\\Desktop\\My Notes\\Star.txt"));
+        d1.multiDisplay(3);
+    }
 
-        Display d2 = new Display(new SpecialStringDisplayImpl('|', '-', "##", 6));
-        d2.display();
+    @Test
+    public void testIncreaseDisplay() {
+        IncreaseDisplay d1 = new IncreaseDisplay(new CharDisplayImpl('<', '*', '>'), 1);
+        IncreaseDisplay d2 = new IncreaseDisplay(new CharDisplayImpl('|', '#', '-'), 2);
+        d1.increaseDisplay(4);
+        d2.increaseDisplay(6);
     }
 
 }
