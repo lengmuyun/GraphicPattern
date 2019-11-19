@@ -18,7 +18,7 @@ public class Hand {
 
     private int handvalue;
 
-    public Hand(int handvalue) {
+    private Hand(int handvalue) {
         this.handvalue = handvalue;
     }
 
