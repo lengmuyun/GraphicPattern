@@ -1,24 +1,31 @@
 package com.graphic.pattern.strategy;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class SorterTest {
 
-    @Test
-    public void testSelectionSorter() {
-        String[] data = {
+    private String[] data;
+
+    @Before
+    public void init() {
+        data = new String[] {
                 "Dumpty", "Bowman", "Elfland", "Alice"
         };
-        SorterAndPrint sap = new SorterAndPrint(data, new SelectionSorter());
-        sap.execute();
+    }
+
+    @Test
+    public void testSelectionSorter() {
+        testSorter(new SelectionSorter());
     }
 
     @Test
     public void testBubbleSorter() {
-        String[] data = {
-                "Dumpty", "Bowman", "Elfland", "Alice"
-        };
-        SorterAndPrint sap = new SorterAndPrint(data, new BubbleSorter());
+        testSorter(new BubbleSorter());
+    }
+
+    private void testSorter(Sorter sorter) {
+        SorterAndPrint sap = new SorterAndPrint(data, sorter);
         sap.execute();
     }
 
