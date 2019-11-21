@@ -2,6 +2,8 @@ package com.graphic.pattern.composite;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 public class EntryTest {
 
     @Test
@@ -32,7 +34,8 @@ public class EntryTest {
         usrdir.add(tomura);
 
         yuki.add(new File("diary.html", 100));
-        yuki.add(new File("Composite.java", 200));
+        File composite = new File("Composite.java", 200);
+        yuki.add(composite);
 
         hanako.add(new File("memo.tex", 300));
 
@@ -40,6 +43,9 @@ public class EntryTest {
         tomura.add(new File("junk.mail", 500));
 
         rootdir.printList();
+
+        assertEquals(tmpdir.getFullName(), "/root/tmp");
+        assertEquals(composite.getFullName(), "/root/usr/yuki/Composite.java");
     }
 
 }

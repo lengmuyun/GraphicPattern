@@ -25,6 +25,7 @@ public class Directory extends Entry {
     @Override
     public Entry add(Entry entry) throws FileTreatmentException {
         directory.add(entry);
+        entry.parent = this;
         return this;
     }
 
