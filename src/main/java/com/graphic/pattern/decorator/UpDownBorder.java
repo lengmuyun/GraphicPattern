@@ -1,14 +1,17 @@
 package com.graphic.pattern.decorator;
 
-public class FullBorder extends Border {
+public class UpDownBorder extends Border {
 
-    public FullBorder(Display display) {
+    private final char ch;
+
+    public UpDownBorder(Display display, char ch) {
         super(display);
+        this.ch = ch;
     }
 
     @Override
     public int getColumns() {
-        return display.getColumns() + 2;
+        return display.getColumns();
     }
 
     @Override
@@ -19,13 +22,9 @@ public class FullBorder extends Border {
     @Override
     public String getRowText(int row) {
         if (row == 0 || row == display.getRows() + 1) {
-            return getUpOrDownBorder();
+            return makeLine(ch, display.getColumns());
         }
-        return "|" + display.getRowText(row - 1) + "|";
-    }
-
-    private String getUpOrDownBorder() {
-        return "+" + makeLine('-', display.getColumns()) + "+";
+        return display.getRowText(row - 1);
     }
 
 }

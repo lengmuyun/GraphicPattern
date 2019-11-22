@@ -18,4 +18,33 @@ public class DisplayTest {
         b4.show();
     }
 
+    @Test
+    public void testUpDownBorder() {
+        StringDisplay b1 = new StringDisplay("Hello, world.");
+        UpDownBorder b2 = new UpDownBorder(b1, '-');
+        SideBorder b3 = new SideBorder(b2, '*');
+
+        b1.show();
+        b2.show();
+        b3.show();
+
+        Display b4 = new FullBorder(new UpDownBorder(new SideBorder(new UpDownBorder(new SideBorder(new StringDisplay("Hello, world"), '*'), '='), '|'), '/'));
+        b4.show();
+    }
+
+    @Test
+    public void testMultiStringDisplay() {
+        MultiStringDisplay md = new MultiStringDisplay();
+        md.add("Good morning.");
+        md.add("Good afternoon.");
+        md.add("Good night. See you tomorrow.");
+        md.show();
+
+        SideBorder d1 = new SideBorder(md, '#');
+        d1.show();
+
+        FullBorder d2 = new FullBorder(md);
+        d2.show();
+    }
+
 }
