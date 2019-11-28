@@ -26,7 +26,7 @@ public class ListVisitor extends Visitor {
             }
             currentdir = savedir;
         } catch (FileTreatmentException e) {
-            e.printStackTrace();
+            // never go here
         }
     }
 
