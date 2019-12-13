@@ -8,7 +8,7 @@ public class SorterTest {
     private String[] data;
 
     @Before
-    public void init() {
+    public void initialize() {
         data = new String[] {
                 "Dumpty", "Bowman", "Elfland", "Alice"
         };

@@ -24,6 +24,19 @@ public abstract class Support {
         }
     }
 
+    public final void loopSupport(Trouble trouble) {
+        Support support = this;
+        while (support != null && !support.resolve(trouble)) {
+            if (support.next != null) {
+                support = support.next;
+            } else {
+                fail(trouble);
+                support = null;
+            }
+        }
+        if (support != null) support.done(trouble);
+    }
+
     protected void fail(Trouble trouble) {
         System.out.println(trouble + " cannot be resolved.");
     }
