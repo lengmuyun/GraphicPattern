@@ -1,7 +1,6 @@
 package com.graphic.pattern.visitor;
 
 import com.graphic.pattern.composite.FileTreatmentException;
-import com.graphic.pattern.iterator.Iterator;
 import org.junit.Test;
 
 public class VisitorTest {
@@ -81,7 +80,25 @@ public class VisitorTest {
         rootdir.accept(ffv);
 
         System.out.println("HTML files are:");
-        ffv.getFoundFiles().forEach(f -> System.out.println(f.toString()));
+        ffv.getFoundFiles().forEach(System.out::println);
+    }
+
+    @Test
+    public void testSizeVisitor() throws FileTreatmentException {
+        Directory root1 = new Directory("root1");
+        root1.add(new File("dairy.html", 10));
+        root1.add(new File("index.html", 20));
+
+        Directory root2 = new Directory("root2");
+        root2.add(new File("dairy.html", 1000));
+        root2.add(new File("index.html", 2000));
+
+        ElementArrayList list = new ElementArrayList();
+        list.add(root1);
+        list.add(root2);
+        list.add(new File("etc.html", 1234));
+
+        list.accept(new ListVisitor());
     }
 
 }
