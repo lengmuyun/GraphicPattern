@@ -33,4 +33,11 @@ public class SupportTest {
         }
     }
 
+    @Test
+    public void testForLoopSupport() {
+        for (int i=0; i<500; i+=33) {
+            alice.forLoopSupport(new Trouble(i));
+        }
+    }
+
 }

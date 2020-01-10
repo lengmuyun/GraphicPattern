@@ -37,6 +37,18 @@ public abstract class Support {
         if (support != null) support.done(trouble);
     }
 
+    public final void forLoopSupport(Trouble trouble) {
+        for (Support support = this; ; support = support.next) {
+            if (support.resolve(trouble)) {
+                support.done(trouble);
+                break;
+            } else if (support.next == null) {
+                support.fail(trouble);
+                break;
+            }
+        }
+    }
+
     protected void fail(Trouble trouble) {
         System.out.println(trouble + " cannot be resolved.");
     }
